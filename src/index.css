@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+
+.react-select-container .react-select__control {
+  @apply border rounded-lg min-h-[42px] hover:border-gray-400;
+}
+
+.react-select-container .react-select__control--is-focused {
+  @apply border-blue-500 ring-2 ring-blue-200;
+}
