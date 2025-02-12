@@ -1,8 +1,10 @@
+// filepath: /Users/florian/Desktop/p14/my-react-app/src/components/EmployeeList.jsx
 import React, { useState } from 'react';
 import { useTable, usePagination, useGlobalFilter } from 'react-table';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/solid';
+import EmployeeCard from './EmployeeCard';
 
 const EmployeeList = () => {
   const employees = useSelector(state => state.employees.employees) || [];
@@ -89,29 +91,41 @@ const EmployeeList = () => {
       {data.length === 0 ? (
         <p className="text-center text-gray-600">Aucun employé trouvé.</p>
       ) : (
-        <table {...getTableProps()} className="min-w-full bg-white shadow-lg rounded-lg overflow-hidden">
-          <thead className="bg-gray-100">
-            {headerGroups.map((headerGroup, index) => (
-              <tr key={index} {...headerGroup.getHeaderGroupProps()} className="border-b">
-                {headerGroup.headers.map((column, colIndex) => (
-                  <th key={colIndex} {...column.getHeaderProps()} className="text-left py-3 px-4 font-medium text-gray-700">{column.render('Header')}</th>
+        <>
+          <div className="hidden md:block">
+            <table {...getTableProps()} className="min-w-full bg-white shadow-lg rounded-lg overflow-hidden">
+              <thead className="bg-gray-100">
+                {headerGroups.map((headerGroup, index) => (
+                  <tr key={index} {...headerGroup.getHeaderGroupProps()} className="border-b">
+                    {headerGroup.headers.map((column, colIndex) => (
+                      <th key={colIndex} {...column.getHeaderProps()} className="text-left py-3 px-4 font-medium text-gray-700">{column.render('Header')}</th>
+                    ))}
+                  </tr>
                 ))}
-              </tr>
-            ))}
-          </thead>
-          <tbody {...getTableBodyProps()}>
+              </thead>
+              <tbody {...getTableBodyProps()}>
+                {page.map((row, rowIndex) => {
+                  prepareRow(row);
+                  return (
+                    <tr key={rowIndex} {...row.getRowProps()} className="border-b">
+                      {row.cells.map((cell, cellIndex) => (
+                        <td key={cellIndex} {...cell.getCellProps()} className="py-3 px-4 text-gray-600">{cell.render('Cell')}</td>
+                      ))}
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+          <div className="md:hidden">
             {page.map((row, rowIndex) => {
               prepareRow(row);
               return (
-                <tr key={rowIndex} {...row.getRowProps()} className="border-b">
-                  {row.cells.map((cell, cellIndex) => (
-                    <td key={cellIndex} {...cell.getCellProps()} className="py-3 px-4 text-gray-600">{cell.render('Cell')}</td>
-                  ))}
-                </tr>
+                <EmployeeCard key={rowIndex} employee={row.original} />
               );
             })}
-          </tbody>
-        </table>
+          </div>
+        </>
       )}
 
       <div className="flex justify-between items-center mt-4">
