@@ -9,8 +9,8 @@ const CustomModal = ({ isOpen, onRequestClose, contentLabel, children }) => {
       isOpen={isOpen}
       onRequestClose={onRequestClose}
       contentLabel={contentLabel}
-      className="modal"
-      overlayClassName="overlay"
+      className="modal-content"
+      overlayClassName="modal-overlay"
     >
       {children}
     </Modal>
