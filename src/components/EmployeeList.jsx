@@ -1,4 +1,3 @@
-// filepath: /Users/florian/Desktop/p14/my-react-app/src/components/EmployeeList.jsx
 import React, { useState } from 'react';
 import { useTable, usePagination, useGlobalFilter } from 'react-table';
 import { useSelector } from 'react-redux';

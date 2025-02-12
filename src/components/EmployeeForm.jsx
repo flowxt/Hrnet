@@ -1,10 +1,10 @@
 import React from 'react';
 import DatePicker from 'react-datepicker';
 import Select from 'react-select';
-import { UserIcon, UserCircleIcon, CalendarIcon, BriefcaseIcon, HomeIcon } from '@heroicons/react/24/solid';
+import { UserIcon, CalendarIcon, HomeIcon } from '@heroicons/react/24/solid';
 import { departmentOptions, states } from '../data/options';
 
-const EmployeeForm = ({ step, employee, errors, handleChange, handleDateChange, handleNext, handlePrevious, handleSave }) => {
+const EmployeeForm = ({ step, employee, errors, handleChange, handleDateChange }) => {
   return (
     <form className="bg-white shadow-xl rounded-2xl px-8 pt-10 pb-8 mb-6">
       
@@ -12,7 +12,7 @@ const EmployeeForm = ({ step, employee, errors, handleChange, handleDateChange, 
       {step === 1 && (
         <div className="space-y-6">
           <div className="relative">
-          <label className="block text-gray-700 text-sm font-medium mb-2">Prénom</label>
+            <label className="block text-gray-700 text-sm font-medium mb-2">Prénom</label>
             <input
               type="text"
               name="firstName"
@@ -21,7 +21,7 @@ const EmployeeForm = ({ step, employee, errors, handleChange, handleDateChange, 
               className={`w-full pl-12 pr-4 py-3 border-2 ${errors.firstName ? 'border-red-500' : 'border-gray-200'} rounded-xl focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all`}
               placeholder="Prénom"
             />
-          <UserIcon className="w-6 h-6 absolute left-4 top-[38px] text-blue-500" />
+            <UserIcon className="w-6 h-6 absolute left-4 top-[38px] text-blue-500" />
             {errors.firstName && <p className="text-red-500 text-xs mt-1">{errors.firstName}</p>}
           </div>
           <div className="relative">
@@ -34,7 +34,7 @@ const EmployeeForm = ({ step, employee, errors, handleChange, handleDateChange, 
               className={`w-full pl-12 pr-4 py-3 border-2 ${errors.lastName ? 'border-red-500' : 'border-gray-200'} rounded-xl focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all`}
               placeholder="Nom de famille"
             />
-           <UserIcon className="w-6 h-6 absolute left-4 top-[38px] text-blue-500" />
+            <UserIcon className="w-6 h-6 absolute left-4 top-[38px] text-blue-500" />
             {errors.lastName && <p className="text-red-500 text-xs mt-1">{errors.lastName}</p>}
           </div>
         </div>
@@ -42,41 +42,41 @@ const EmployeeForm = ({ step, employee, errors, handleChange, handleDateChange, 
 
       {/* Etape 2 : Les dates  */}
       {step === 2 && (
-  <div className="space-y-6">
-    <div className="relative">
-      <label className="block text-gray-700 text-sm font-medium mb-2">Date de naissance</label>
-      <DatePicker
-        selected={employee.dateOfBirth}
-        onChange={(date) => handleDateChange('dateOfBirth', date)}
-        className={`w-full pl-12 pr-4 py-3 border-2 ${errors.dateOfBirth ? 'border-red-500' : 'border-gray-200'} rounded-xl focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all`}
-        placeholderText="Date de naissance"
-        showYearDropdown
-        scrollableYearDropdown
-        yearDropdownItemNumber={50}
-        dateFormat="dd/MM/yyyy"
-      />
-      <CalendarIcon className="w-6 h-6 absolute left-4 top-[38px] text-purple-500" />
-      {errors.dateOfBirth && <p className="text-red-500 text-xs mt-1">{errors.dateOfBirth}</p>}
-    </div>
-    <div className="relative">
-      <label className="block text-gray-700 text-sm font-medium mb-2">Date d'embauche</label>
-      <DatePicker
-        selected={employee.startDate}
-        onChange={(date) => handleDateChange('startDate', date)}
-        className={`w-full pl-12 pr-4 py-3 border-2 ${errors.startDate ? 'border-red-500' : 'border-gray-200'} rounded-xl focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all`}
-        placeholderText="Date d'embauche"
-        showYearDropdown
-        scrollableYearDropdown
-        yearDropdownItemNumber={50}
-        dateFormat="dd/MM/yyyy"
-      />
-      <CalendarIcon className="w-6 h-6 absolute left-4 top-[38px] text-purple-500" />
-      {errors.startDate && <p className="text-red-500 text-xs mt-1">{errors.startDate}</p>}
-    </div>
-  </div>
-)}
+        <div className="space-y-6">
+          <div className="relative">
+            <label className="block text-gray-700 text-sm font-medium mb-2">Date de naissance</label>
+            <DatePicker
+              selected={employee.dateOfBirth}
+              onChange={(date) => handleDateChange('dateOfBirth', date)}
+              className={`w-full pl-12 pr-4 py-3 border-2 ${errors.dateOfBirth ? 'border-red-500' : 'border-gray-200'} rounded-xl focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all`}
+              placeholderText="Date de naissance"
+              showYearDropdown
+              scrollableYearDropdown
+              yearDropdownItemNumber={50}
+              dateFormat="dd/MM/yyyy"
+            />
+            <CalendarIcon className="w-6 h-6 absolute left-4 top-[38px] text-purple-500" />
+            {errors.dateOfBirth && <p className="text-red-500 text-xs mt-1">{errors.dateOfBirth}</p>}
+          </div>
+          <div className="relative">
+            <label className="block text-gray-700 text-sm font-medium mb-2">Date d'embauche</label>
+            <DatePicker
+              selected={employee.startDate}
+              onChange={(date) => handleDateChange('startDate', date)}
+              className={`w-full pl-12 pr-4 py-3 border-2 ${errors.startDate ? 'border-red-500' : 'border-gray-200'} rounded-xl focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all`}
+              placeholderText="Date d'embauche"
+              showYearDropdown
+              scrollableYearDropdown
+              yearDropdownItemNumber={50}
+              dateFormat="dd/MM/yyyy"
+            />
+            <CalendarIcon className="w-6 h-6 absolute left-4 top-[38px] text-purple-500" />
+            {errors.startDate && <p className="text-red-500 text-xs mt-1">{errors.startDate}</p>}
+          </div>
+        </div>
+      )}
 
-{/* Etapes 3 : Les informations de contact */}
+      {/* Etapes 3 : Les informations de contact */}
       {step === 3 && (
         <div className="space-y-6">
           <div className="relative">
@@ -89,7 +89,7 @@ const EmployeeForm = ({ step, employee, errors, handleChange, handleDateChange, 
               className={`w-full pl-12 pr-4 py-3 border-2 ${errors.street ? 'border-red-500' : 'border-gray-200'} rounded-xl focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all`}
               placeholder="Rue"
             />
-          <HomeIcon className="w-6 h-6 absolute left-4 top-[38px] text-green-500" />
+            <HomeIcon className="w-6 h-6 absolute left-4 top-[38px] text-green-500" />
             {errors.street && <p className="text-red-500 text-xs mt-1">{errors.street}</p>}
           </div>
           <div className="relative">
@@ -150,35 +150,6 @@ const EmployeeForm = ({ step, employee, errors, handleChange, handleDateChange, 
           </div>
         </div>
       )}
-      <div className="flex justify-between mt-8">
-        {step > 1 && (
-          <button
-            type="button"
-            onClick={handlePrevious}
-            className="bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold py-3 px-8 rounded-xl transition-all transform hover:scale-105"
-          >
-            ← Précédent
-          </button>
-        )}
-        {step < 4 && (
-          <button
-            type="button"
-            onClick={handleNext}
-            className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-xl transition-all transform hover:scale-105"
-          >
-            Suivant →
-          </button>
-        )}
-        {step === 4 && (
-          <button
-            type="button"
-            onClick={handleSave}
-            className="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-8 rounded-xl transition-all transform hover:scale-105"
-          >
-            Enregistrer
-          </button>
-        )}
-      </div>
     </form>
   );
 };

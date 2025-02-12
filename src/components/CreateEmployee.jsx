@@ -3,6 +3,8 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import CustomModal from './CustomModal';
 import EmployeeForm from './EmployeeForm';
+import ProgressBar from './ProgressBar';
+import StepNavigation from './StepNavigation';
 import { addEmployee } from '../actions';
 import 'react-datepicker/dist/react-datepicker.css';
 import { CheckIcon } from '@heroicons/react/24/solid';
@@ -90,19 +92,7 @@ const CreateEmployee = () => {
 
   return (
     <div className="container mx-auto p-4 max-w-3xl">
-      {/* Barre de progression */}
-      <div className="mb-8">
-        <div className="h-3 bg-gray-200 rounded-full overflow-hidden">
-          <div 
-            className="h-full bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 transition-all duration-500" 
-            style={{ width: `${(step / 4) * 100}%` }}
-          ></div>
-        </div>
-        <div className="flex justify-between mt-2 text-sm text-gray-600">
-          <span>Étape {step} sur 4</span>
-          <span>{['Information', 'Dates', 'Adresse', 'Département'][step - 1]}</span>
-        </div>
-      </div>
+      <ProgressBar step={step} totalSteps={4} />
   
       <EmployeeForm
         step={step}
@@ -110,13 +100,17 @@ const CreateEmployee = () => {
         errors={errors}
         handleChange={handleChange}
         handleDateChange={handleDateChange}
-        handleNext={handleNext}
-        handlePrevious={handlePrevious}
-        handleSave={handleSave}
       />
   
-{/* Bouton Accueil */}
-<div className="flex justify-end mt-4">
+      <StepNavigation 
+        step={step} 
+        handlePrevious={handlePrevious} 
+        handleNext={handleNext} 
+        handleSave={handleSave} 
+      />
+  
+      {/* Bouton Accueil */}
+      <div className="flex justify-end mt-4">
         <button
           type="button"
           onClick={goToHome}
