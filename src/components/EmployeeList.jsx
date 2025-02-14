@@ -19,8 +19,11 @@ const EmployeeList = () => {
       : [];
   }, [employees]);
 
+
+  // Définition des colonne de mon tableau
   const columns = React.useMemo(
     () => [
+      // Je configure les colonnes avec un Header et un accessor
       { Header: 'Prénom', accessor: 'firstName' },
       { Header: 'Nom de famille', accessor: 'lastName' },
       { Header: 'Date d\'embauche', accessor: 'startDate' },
@@ -34,6 +37,7 @@ const EmployeeList = () => {
     []
   );
 
+  // Ici je configure react-table avec les hooks useTable, useGlobalFilter et usePagination
   const {
     getTableProps,
     getTableBodyProps,

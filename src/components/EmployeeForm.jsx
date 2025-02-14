@@ -2,14 +2,19 @@ import React from 'react';
 import DatePicker from 'react-datepicker';
 import Select from 'react-select';
 import { UserIcon, CalendarIcon, HomeIcon } from '@heroicons/react/24/solid';
+// Import de mes données data (menu déroulant)
 import { departmentOptions, states } from '../data/options';
+
+// Composant de formulaire employé 
 
 const EmployeeForm = ({ step, employee, errors, handleChange, handleDateChange }) => {
   return (
+    // Container de mon formulaire
     <form className="bg-white shadow-xl rounded-2xl px-8 pt-10 pb-8 mb-6">
       
       {/* Etapes 1 : Les informations */}
       {step === 1 && (
+        // code des champs prénom et nom de famille
         <div className="space-y-6">
           <div className="relative">
             <label className="block text-gray-700 text-sm font-medium mb-2">Prénom</label>
