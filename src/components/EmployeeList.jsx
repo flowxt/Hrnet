@@ -95,6 +95,7 @@ const EmployeeList = () => {
         <p className="text-center text-gray-600">Aucun employé trouvé.</p>
       ) : (
         <>
+        {/* ici il y a mon tableau à partir de md */}
           <div className="hidden md:block">
             <table {...getTableProps()} className="min-w-full bg-white shadow-lg rounded-lg overflow-hidden">
               <thead className="bg-gray-100">
@@ -121,6 +122,7 @@ const EmployeeList = () => {
             </table>
           </div>
           <div className="md:hidden">
+            {/* ici je met mes cartes pour le responsive */}
             {page.map((row, rowIndex) => {
               prepareRow(row);
               return (

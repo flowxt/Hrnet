@@ -159,4 +159,5 @@ const EmployeeForm = ({ step, employee, errors, handleChange, handleDateChange }
   );
 };
 
+// Export du composant
 export default EmployeeForm;
