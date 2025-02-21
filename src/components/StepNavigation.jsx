@@ -16,7 +16,7 @@ const StepNavigation = ({ step, handlePrevious, handleNext, handleSave }) => {
         <button
           type="button"
           onClick={handleNext}
-          className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-xl transition-all transform hover:scale-105"
+          className="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-8 rounded-xl transition-all transform hover:scale-105"
         >
           Suivant →
         </button>

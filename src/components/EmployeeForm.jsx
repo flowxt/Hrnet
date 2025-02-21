@@ -23,10 +23,10 @@ const EmployeeForm = ({ step, employee, errors, handleChange, handleDateChange }
               name="firstName"
               value={employee.firstName}
               onChange={handleChange}
-              className={`w-full pl-12 pr-4 py-3 border-2 ${errors.firstName ? 'border-red-500' : 'border-gray-200'} rounded-xl focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all`}
+              className={`w-full pl-12 pr-4 py-3 border-2 ${errors.firstName ? 'border-red-500' : 'border-gray-200'} rounded-xl focus:border-green-500 focus:ring-2 focus:ring-green-200 transition-all`}
               placeholder="Prénom"
             />
-            <UserIcon className="w-6 h-6 absolute left-4 top-[38px] text-blue-500" />
+            <UserIcon className="w-6 h-6 absolute left-4 top-[38px] text-green-500" />
             {errors.firstName && <p className="text-red-500 text-xs mt-1">{errors.firstName}</p>}
           </div>
           <div className="relative">
@@ -36,10 +36,10 @@ const EmployeeForm = ({ step, employee, errors, handleChange, handleDateChange }
               name="lastName"
               value={employee.lastName}
               onChange={handleChange}
-              className={`w-full pl-12 pr-4 py-3 border-2 ${errors.lastName ? 'border-red-500' : 'border-gray-200'} rounded-xl focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all`}
+              className={`w-full pl-12 pr-4 py-3 border-2 ${errors.lastName ? 'border-red-500' : 'border-gray-200'} rounded-xl focus:border-green-500 focus:ring-2 focus:ring-green-200 transition-all`}
               placeholder="Nom de famille"
             />
-            <UserIcon className="w-6 h-6 absolute left-4 top-[38px] text-blue-500" />
+            <UserIcon className="w-6 h-6 absolute left-4 top-[38px] text-green-500" />
             {errors.lastName && <p className="text-red-500 text-xs mt-1">{errors.lastName}</p>}
           </div>
         </div>
@@ -53,7 +53,7 @@ const EmployeeForm = ({ step, employee, errors, handleChange, handleDateChange }
             <DatePicker
               selected={employee.dateOfBirth}
               onChange={(date) => handleDateChange('dateOfBirth', date)}
-              className={`w-full pl-12 pr-4 py-3 border-2 ${errors.dateOfBirth ? 'border-red-500' : 'border-gray-200'} rounded-xl focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all`}
+              className={`w-full pl-12 pr-4 py-3 border-2 ${errors.dateOfBirth ? 'border-red-500' : 'border-gray-200'} rounded-xl focus:border-green-500 focus:ring-2 focus:ring-green-200 transition-all`}
               placeholderText="Date de naissance"
               showYearDropdown
               scrollableYearDropdown
@@ -68,7 +68,7 @@ const EmployeeForm = ({ step, employee, errors, handleChange, handleDateChange }
             <DatePicker
               selected={employee.startDate}
               onChange={(date) => handleDateChange('startDate', date)}
-              className={`w-full pl-12 pr-4 py-3 border-2 ${errors.startDate ? 'border-red-500' : 'border-gray-200'} rounded-xl focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all`}
+              className={`w-full pl-12 pr-4 py-3 border-2 ${errors.startDate ? 'border-red-500' : 'border-gray-200'} rounded-xl focus:border-green-500 focus:ring-2 focus:ring-green-200 transition-all`}
               placeholderText="Date d'embauche"
               showYearDropdown
               scrollableYearDropdown
@@ -91,7 +91,7 @@ const EmployeeForm = ({ step, employee, errors, handleChange, handleDateChange }
               name="street"
               value={employee.street}
               onChange={handleChange}
-              className={`w-full pl-12 pr-4 py-3 border-2 ${errors.street ? 'border-red-500' : 'border-gray-200'} rounded-xl focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all`}
+              className={`w-full pl-12 pr-4 py-3 border-2 ${errors.street ? 'border-red-500' : 'border-gray-200'} rounded-xl focus:border-green-500 focus:ring-2 focus:ring-green-200 transition-all`}
               placeholder="Rue"
             />
             <HomeIcon className="w-6 h-6 absolute left-4 top-[38px] text-green-500" />
@@ -104,7 +104,7 @@ const EmployeeForm = ({ step, employee, errors, handleChange, handleDateChange }
               name="city"
               value={employee.city}
               onChange={handleChange}
-              className={`w-full pl-12 pr-4 py-3 border-2 ${errors.city ? 'border-red-500' : 'border-gray-200'} rounded-xl focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all`}
+              className={`w-full pl-12 pr-4 py-3 border-2 ${errors.city ? 'border-red-500' : 'border-gray-200'} rounded-xl focus:border-green-500 focus:ring-2 focus:ring-green-200 transition-all`}
               placeholder="Ville"
             />
             <HomeIcon className="w-6 h-6 absolute left-4 top-[38px] text-green-500" />
@@ -117,7 +117,7 @@ const EmployeeForm = ({ step, employee, errors, handleChange, handleDateChange }
               value={states.find(option => option.value === employee.state)}
               onChange={(selectedOption) => handleChange({ target: { name: 'state', value: selectedOption.value } })}
               options={states}
-              className={`w-full pl-12 pr-4 py-3 border-2 ${errors.state ? 'border-red-500' : 'border-gray-200'} rounded-xl focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all`}
+              className={`w-full pl-12 pr-4 py-3 border-2 ${errors.state ? 'border-red-500' : 'border-gray-200'} rounded-xl focus:border-green-500 focus:ring-2 focus:ring-green-200 transition-all`}
               placeholder="Sélectionnez l'état"
             />
             {errors.state && <p className="text-red-500 text-xs mt-1">{errors.state}</p>}
@@ -129,7 +129,7 @@ const EmployeeForm = ({ step, employee, errors, handleChange, handleDateChange }
               name="zipCode"
               value={employee.zipCode}
               onChange={handleChange}
-              className={`w-full pl-12 pr-4 py-3 border-2 ${errors.zipCode ? 'border-red-500' : 'border-gray-200'} rounded-xl focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all`}
+              className={`w-full pl-12 pr-4 py-3 border-2 ${errors.zipCode ? 'border-red-500' : 'border-gray-200'} rounded-xl focus:border-green-500 focus:ring-2 focus:ring-green-200 transition-all`}
               placeholder="Code postal"
             />
             <HomeIcon className="w-6 h-6 absolute left-4 top-[38px] text-green-500" />
@@ -148,7 +148,7 @@ const EmployeeForm = ({ step, employee, errors, handleChange, handleDateChange }
               value={departmentOptions.find(option => option.value === employee.department)}
               onChange={(selectedOption) => handleChange({ target: { name: 'department', value: selectedOption.value } })}
               options={departmentOptions}
-              className={`w-full pl-12 pr-4 py-3 border-2 ${errors.department ? 'border-red-500' : 'border-gray-200'} rounded-xl focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all`}
+              className={`w-full pl-12 pr-4 py-3 border-2 ${errors.department ? 'border-red-500' : 'border-gray-200'} rounded-xl focus:border-green-500 focus:ring-2 focus:ring-green-200 transition-all`}
               placeholder="Sélectionnez le département"
             />
             {errors.department && <p className="text-red-500 text-xs mt-1">{errors.department}</p>}

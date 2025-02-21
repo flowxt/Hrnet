@@ -144,7 +144,7 @@ const CreateEmployee = () => {
           <p className="text-gray-600 mb-6">L'employé a été correctement enregistré dans le système.</p>
           <button
             onClick={closeModal}
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-xl transition-all transform hover:scale-105"
+            className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-8 rounded-xl transition-all transform hover:scale-105"
           >
             Retour à l'accueil
           </button>

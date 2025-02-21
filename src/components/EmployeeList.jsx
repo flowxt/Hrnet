@@ -148,7 +148,7 @@ const EmployeeList = () => {
         </span>
       </div>
 
-      <Link to="/" className="text-blue-600 hover:underline mt-4 block text-center">Accueil</Link>
+      <Link to="/" className="text-green-600 hover:underline mt-4 block text-center">Accueil</Link>
     </div>
   );
 };
