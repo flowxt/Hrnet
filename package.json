@@ -22,6 +22,7 @@
     "react-select": "^5.10.0",
     "react-table": "^7.8.0",
     "redux": "^5.0.1",
+    "react-table-librairy": "file:../react-table-librairy",
     "tailwindcss": "^4.0.5"
   },
   "devDependencies": {

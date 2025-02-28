@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import Table from './common/Table';
+import { Table } from 'react-table-librairy'; // Import de ma librairie
 import EmployeeCard from './EmployeeCard';
 
 const EmployeeList = () => {
@@ -42,14 +42,14 @@ const EmployeeList = () => {
       ) : (
         <>
           <div className="hidden md:block">
-            <Table 
-              data={data}
-              columns={columns}
-              pageSize={pageSize}
-              showGlobalFilter={true}
-              enableSorting={true}
-              ariaLabel="Liste des employés"
-            />
+          <Table 
+  data={data} 
+  columns={columns} 
+  pageSize={pageSize}
+  showGlobalFilter={true}  // Au lieu de filterable
+  enableSorting={true}     // Au lieu de sortable
+  ariaLabel="Liste des employés"
+/>
           </div>
           <div className="md:hidden">
             {data.map((employee, index) => (
