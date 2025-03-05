@@ -1,22 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Table } from 'react-table-librairy'; // Import de ma librairie
+import { Table } from 'react-table-librairy';
 import EmployeeCard from './EmployeeCard';
+import { generateEmployees } from "../data/mockData";
 
 const EmployeeList = () => {
-  const employees = useSelector(state => state.employees.employees) || [];
   const [pageSize, setPageSize] = useState(10);
+  const reduxEmployees = useSelector(state => state.employees.employees) || [];
+  
+  // Combine les données mockées avec les données Redux
+  const mockEmployees = useMemo(() => {
+    // Si nous avons des données réelles au dessus de 10, ne pas utiliser les mocks
+    if (reduxEmployees.length > 10) {
+      return reduxEmployees;
+    }
+    // Sinon, utiliser les données mockées
+    return generateEmployees(100);
+  }, [reduxEmployees]);
 
-  const data = React.useMemo(() => {
-    return Array.isArray(employees)
-      ? employees.map(emp => ({
-          ...emp,
-          dateOfBirth: new Date(emp.dateOfBirth).toLocaleDateString(),
-          startDate: new Date(emp.startDate).toLocaleDateString(),
-        }))
-      : [];
-  }, [employees]);
+  const data = useMemo(() => {
+    return mockEmployees.map(emp => ({
+      ...emp,
+      dateOfBirth: new Date(emp.dateOfBirth).toLocaleDateString(),
+      startDate: new Date(emp.startDate).toLocaleDateString(),
+    }));
+  }, [mockEmployees]);
 
   const columns = React.useMemo(
     () => [
