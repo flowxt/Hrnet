@@ -1,16 +1,18 @@
-export const ADD_EMPLOYEE = "ADD_EMPLOYEE"; // Action pour ajouter un employé
-export const LOAD_EMPLOYEES = "LOAD_EMPLOYEES"; // Action pour charger la liste des employés
+export const ADD_EMPLOYEE = "ADD_EMPLOYEE";
+export const REMOVE_EMPLOYEE = "REMOVE_EMPLOYEE";
+export const ARCHIVE_EMPLOYEE = "ARCHIVE_EMPLOYEE";
 
-// Action creator pour ajouter un nouvel employé
-// Prend un objet employee en paramètre et retourne une action
 export const addEmployee = (employee) => ({
-  type: ADD_EMPLOYEE, // Type de l'action
-  payload: employee, // Données de l'employé à ajouter
+  type: ADD_EMPLOYEE,
+  payload: employee,
 });
 
-// Action creator pour charger une liste d'employés
-// Prend un tableau employees en paramètre et retourne une action
-export const loadEmployees = (employees) => ({
-  type: LOAD_EMPLOYEES, // Type de l'action
-  payload: employees, // Tableau d'employés à charger
+export const removeEmployee = (employeeId) => ({
+  type: REMOVE_EMPLOYEE,
+  payload: employeeId,
+});
+
+export const archiveEmployee = (employeeId) => ({
+  type: ARCHIVE_EMPLOYEE,
+  payload: employeeId,
 });

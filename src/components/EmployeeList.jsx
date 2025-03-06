@@ -1,18 +1,21 @@
 import React, { useState, useMemo } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Table } from 'react-table-librairy';
 import EmployeeCard from './EmployeeCard';
 import { generateEmployees } from "../data/mockData";
+// Importez vos actions (à créer si elles n'existent pas)
+import { removeEmployee, archiveEmployee } from "../actions";
 
 const EmployeeList = () => {
+  const dispatch = useDispatch();
   const [pageSize, setPageSize] = useState(10);
   const reduxEmployees = useSelector(state => state.employees.employees) || [];
   
   // Combine les données mockées avec les données Redux
   const mockEmployees = useMemo(() => {
     // Si nous avons des données réelles au dessus de 10, ne pas utiliser les mocks
-    if (reduxEmployees.length > 10) {
+    if (reduxEmployees.length > 15) {
       return reduxEmployees;
     }
     // Sinon, utiliser les données mockées
@@ -42,6 +45,25 @@ const EmployeeList = () => {
     []
   );
 
+  // Gestionnaire pour la suppression d'un employé
+  const handleDelete = (employee) => {
+    if (window.confirm(`Êtes-vous sûr de vouloir supprimer ${employee.firstName} ${employee.lastName} ?`)) {
+      dispatch(removeEmployee(employee.id));
+    }
+  };
+
+  // Gestionnaire pour l'archivage d'un employé (à implémenter dans les actions Redux)
+  const handleArchive = (employee) => {
+    if (window.confirm(`Voulez-vous archiver l'employé ${employee.firstName} ${employee.lastName} ?`)) {
+      dispatch(archiveEmployee(employee.id));
+    }
+  };
+
+  // Gestionnaire pour le changement de taille de page
+  const handlePageSizeChange = (size) => {
+    setPageSize(size);
+  };
+
   return (
     <div className="container mx-auto p-4 max-w-7xl">
       <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">Employés actuels</h1>
@@ -51,18 +73,40 @@ const EmployeeList = () => {
       ) : (
         <>
           <div className="hidden md:block">
-          <Table 
-  data={data} 
-  columns={columns} 
-  pageSize={pageSize}
-  showGlobalFilter={true}  // Au lieu de filterable
-  enableSorting={true}     // Au lieu de sortable
-  ariaLabel="Liste des employés"
-/>
+            <Table 
+              data={data} 
+              columns={columns} 
+              pageSize={pageSize}
+              showGlobalFilter={true}  
+              enableSorting={true}     
+              ariaLabel="Liste des employés"
+              onDelete={handleDelete}
+              onArchive={handleArchive}
+              pageSizeOptions={[10, 25, 50, 100]}
+            />
           </div>
           <div className="md:hidden">
+            {/* Pour la version mobile, ajouter également la suppression/archivage */}
             {data.map((employee, index) => (
-              <EmployeeCard key={index} employee={employee} />
+              <div key={index} className="mb-4 relative">
+                <EmployeeCard employee={employee} />
+                <div className="absolute top-2 right-2 flex space-x-2">
+                  <button 
+                    onClick={() => handleArchive(employee)}
+                    className="p-1 bg-yellow-100 rounded-full text-yellow-600 hover:bg-yellow-200"
+                    aria-label="Archiver"
+                  >
+                    A
+                  </button>
+                  <button 
+                    onClick={() => handleDelete(employee)}
+                    className="p-1 bg-red-100 rounded-full text-red-600 hover:bg-red-200"
+                    aria-label="Supprimer"
+                  >
+                    ✕
+                  </button>
+                </div>
+              </div>
             ))}
           </div>
         </>

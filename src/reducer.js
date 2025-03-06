@@ -1,10 +1,16 @@
 // Import des types d'actions depuis le fichier actions.js
-import { ADD_EMPLOYEE, LOAD_EMPLOYEES } from "./actions";
+import {
+  ADD_EMPLOYEE,
+  LOAD_EMPLOYEES,
+  REMOVE_EMPLOYEE,
+  ARCHIVE_EMPLOYEE,
+} from "./actions";
 
 // Définition de l'état initial
 // Initialise un tableau vide pour stocker les employés
 const initialState = {
   employees: [],
+  archivedEmployees: [], // Nouveau tableau pour stocker les employés archivés
 };
 
 // Définition du reducer pour gérer les employés
@@ -24,6 +30,26 @@ const employeeReducer = (state = initialState, action) => {
       return {
         ...state, // Copie de l'état existant
         employees: action.payload, // Remplacement complet du tableau d'employés
+      };
+
+    // Cas : Suppression d'un employé
+    case REMOVE_EMPLOYEE:
+      return {
+        ...state,
+        employees: state.employees.filter((emp) => emp.id !== action.payload),
+      };
+
+    // Cas : Archivage d'un employé
+    case ARCHIVE_EMPLOYEE:
+      const employeeToArchive = state.employees.find(
+        (emp) => emp.id === action.payload
+      );
+      return {
+        ...state,
+        // Retirer l'employé du tableau principal
+        employees: state.employees.filter((emp) => emp.id !== action.payload),
+        // Ajouter l'employé au tableau des archives
+        archivedEmployees: [...state.archivedEmployees, employeeToArchive],
       };
 
     // Cas par défaut : retourne l'état sans modification
